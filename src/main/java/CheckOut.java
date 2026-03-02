@@ -9,6 +9,10 @@ public class CheckOut {
         checkOutList.add(product);
     }
 
+    public List<Product> getProducts() {
+        return checkOutList;
+    }
+
     public int calculateTotalPrice() {
         int total = 0;
         for(Product product : checkOutList) {

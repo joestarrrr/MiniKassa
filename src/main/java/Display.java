@@ -17,8 +17,23 @@ public class Display {
     }
 
     public int chooseProduct(Scanner scanner) {
-        System.out.println("Välj en produkt");
-        int choice = scanner.nextInt();
-        return choice;
+        System.out.println("Välj en produkt (0 = betala): ");
+
+        if (scanner.hasNextInt()) {
+            return scanner.nextInt();
+        } else {
+            System.out.println("Du måste skriva en siffra!");
+            scanner.next();
+            return -1;
+        }
+    }
+
+    public void showReceipt(CheckOut checkOut) {
+        System.out.println("Kvitto :)");
+
+        for (Product product : checkOut.getProducts()) {
+            System.out.println(product.getName() + "  " + product.getPrice() + " kr");
+        }
+        System.out.println("Totalt: " + checkOut.calculateTotalPrice() + " kr");
     }
 }
